@@ -8,7 +8,6 @@ export const NavBar = () => {
                 <div className="container-fluid">
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            
                             <NavLink to="/task" className="nav-item">
                                 <span className="nav-link active" aria-current="page">Task</span>
                             </NavLink>
