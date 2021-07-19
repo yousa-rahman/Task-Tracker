@@ -3,8 +3,11 @@ import { FormField } from './layout/FormField';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
+import { Link, useHistory } from 'react-router-dom';
 
 export const Register = () => {
+
+    let history = useHistory();
 
     const [formData, setFormData] = useState({
         name: '',
@@ -20,7 +23,7 @@ export const Register = () => {
     const onChange = e => {
         setFormData({...formData, [e.target.name]: e.target.value});
     }
-
+    
     const onSubmit = async (e) => {
         e.preventDefault();
         if(password !== password2){
@@ -30,11 +33,10 @@ export const Register = () => {
                 name: name,
                 email: email,
                 password: password
-            }).then(()=> toast.success("Sucessfuly Registered", {hideProgressBar: true, autoClose: 3000})).catch((error) => toast.error(error.response.data.errors[0].msg, {hideProgressBar: true, autoClose: 3000}));
+            }).then(()=> toast.success("Sucessfuly Registered", {hideProgressBar: true, autoClose: 3000}),history.push('/task')).catch((error) => toast.error(error.response.data.errors[0].msg, {hideProgressBar: true, autoClose: 3000}));
+
         }
     }
-
-  
 
     return(
         <div className="container">
@@ -46,6 +48,9 @@ export const Register = () => {
           <FormField display="Confirm Password" value={password2} title="password2" inputType="password" onChange={e => onChange(e)}/>
           <input type="submit" value="Register" className="btn btn-primary" onClick={e => onSubmit(e)}/>
         </form>
+        <p className="my-1">
+            Already have an account? <Link to="/signin">Sign In</Link>
+        </p>
         </div>
     );    
 
