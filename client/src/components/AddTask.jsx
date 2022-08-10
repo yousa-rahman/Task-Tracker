@@ -11,12 +11,7 @@ export const AddTask = () => {
         title: '',
         description: '',
         assignee: ''
-    })
-
-    // const [assignee, setAssignee] = useState('');
-
-    // axios.get("http://localhost:5000/addtask",{})
-           
+    })           
     
     const {title, description, assignee} = taskData;
     
